@@ -1,0 +1,12 @@
+<h2>Examiner Dashboard</h2>
+
+<h3>Create Exam</h3>
+<input type="text" [(ngModel)]="newExamTitle" placeholder="Exam title" />
+<button (click)="createExam()">Create Exam</button>
+
+<h3>Exams List</h3>
+<ul>
+  <li *ngFor="let exam of exams">
+    {{ exam.title }}
+  </li>
+</ul>

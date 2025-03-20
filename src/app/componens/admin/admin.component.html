@@ -1,0 +1,16 @@
+<h2>Admin Dashboard</h2>
+
+<h3>Create User</h3>
+<input type="text" [(ngModel)]="newUser.name" placeholder="Name" />
+<input type="email" [(ngModel)]="newUser.email" placeholder="email" />
+<select [(ngModel)]="newUser.role">
+  <option value="admin">Admin</option>
+  <option value="examiner">examiner</option>
+  <option value="student">Student</option>
+</select>
+<button (click)="createUser()">Create User</button>
+
+<h3>User List</h3>
+<ul>
+  <li *ngFor="let user of users">{{ user.name }} {{ user.role }}</li>
+</ul>
