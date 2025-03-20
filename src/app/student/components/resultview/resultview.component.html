@@ -1,6 +1,26 @@
-<h2>Your Exam Results</h2>
-<ul>
-  <li *ngFor="let result of results">
-    Exam: {{ result.examTitle }} - Score: {{ result.score }}
-  </li>
-</ul>
+<!-- <app-navbar></app-navbar> -->
+
+<div class="container">
+  <h2>Your Exam Results</h2>
+
+  <div *ngIf="results.length === 0" class="alert alert-info">
+    No results found.
+  </div>
+
+  <table class="table mt-3" *ngIf="results.length > 0">
+    <thead>
+      <tr>
+        <th>Exam Name</th>
+        <th>Score</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let result of results">
+        <td>{{ examTitlesMap[result.examId] || "Unknown Exam" }}</td>
+        <td>{{ result.score }}</td>
+        <td>{{ result.date | date : "medium" }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

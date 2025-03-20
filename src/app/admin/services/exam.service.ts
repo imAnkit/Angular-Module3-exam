@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import {
   BASE_URL,
   FIREBASE_SIGN_IN_URL,
@@ -14,24 +14,37 @@ export class ExamService {
   private baseUrl = `${BASE_URL}/exams`;
   constructor(private http: HttpClient) {}
 
-  getExams(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseUrl}.json`);
+  // Create an exam
+  createExam(examData: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}.json`, examData);
   }
 
-  createExam(exam: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}.json`, exam);
-  }
-  getExamSubmissions(examId: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/${examId}/submissions.json`);
-  }
-  gradeSubmission(
-    examId: string,
-    submissionId: string,
-    score: number
-  ): Observable<any> {
-    return this.http.put(
-      `${this.baseUrl}/${examId}/submissions/${submissionId}/score.json`,
-      score
+  // Get all exams
+  getExams(): Observable<any[]> {
+    return this.http.get(`${this.baseUrl}.json`).pipe(
+      map((response: any) => {
+        if (!response) return [];
+
+        return Object.keys(response).map((key) => ({
+          id: key,
+          ...response[key],
+        }));
+      })
     );
+  }
+
+  // Get a single exam by ID
+  getExamById(id: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/${id}.json`).pipe(
+      map((exam: any) => ({
+        id: id,
+        ...exam,
+      }))
+    );
+  }
+
+  // Delete an exam
+  deleteExam(id: string): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/${id}.json`);
   }
 }

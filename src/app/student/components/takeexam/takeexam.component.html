@@ -1,23 +1,64 @@
-<h2>{{ exam?.title }}</h2>
+<!-- <app-navbar></app-navbar> -->
 
-<div *ngIf="exam?.questions[currentQuestionIndex]">
-  <p>{{ exam.questions[currentQuestionIndex].question }}</p>
-  <div *ngFor="let option of exam.questions[currentQuestionIndex].options">
-    <input type="radio" [(ngModel)]="selectedAnswer" [value]="option" />
-    {{ option }}
+<div class="container mt-4" *ngIf="exam">
+  <h2>{{ exam.title }}</h2>
+
+  <div *ngIf="currentQuestionIndex < exam.questions.length; else finishedExam">
+    <div class="card mb-4">
+      <div class="card-body">
+        <h5>
+          Question {{ currentQuestionIndex + 1 }} of {{ exam.questions.length }}
+        </h5>
+        <p>{{ currentQuestion.questionText }}</p>
+
+        <ul class="list-group">
+          <li
+            *ngFor="let option of currentQuestion.options"
+            class="list-group-item"
+            [class.active]="selectedOption === option"
+            (click)="selectOption(option)"
+            style="cursor: pointer"
+          >
+            {{ option }}
+          </li>
+        </ul>
+
+        <div class="mt-3">
+          <p>
+            Time Left: <strong>{{ timer }}s</strong>
+          </p>
+        </div>
+
+        <button
+          class="btn btn-primary mt-2"
+          (click)="nextQuestion()"
+          [disabled]="!selectedOption"
+        >
+          Next
+        </button>
+      </div>
+    </div>
   </div>
-  <button
-    (click)="nextQuestion()"
-    *ngIf="currentQuestionIndex < exam.questions.length - 1"
-  >
-    Next
-  </button>
-  <button
-    (click)="submitExam()"
-    *ngIf="currentQuestionIndex === exam.questions.length - 1"
-  >
-    Submit
-  </button>
+
+  <!-- Exam Finished Template -->
+  <ng-template #finishedExam>
+    <div class="alert alert-success">
+      <h4>Exam Submitted!</h4>
+      <p>Your score is: {{ score }} / {{ exam.questions.length }}</p>
+      <button class="btn btn-secondary" routerLink="/student/results">
+        View Results
+      </button>
+    </div>
+  </ng-template>
 </div>
 
-<p>Time Left: {{ timeLeft }}</p>
+<!-- Loading State -->
+<div *ngIf="!exam && !isLoading" class="alert alert-danger">
+  <p>No exam found!</p>
+</div>
+
+<div *ngIf="isLoading" class="text-center mt-4">
+  <div class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>

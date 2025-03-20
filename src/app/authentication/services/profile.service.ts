@@ -17,6 +17,9 @@ export class ProfileService {
   getUser(): User | undefined {
     return this.user ? { ...this.user } : undefined;
   }
+  getUserId(): string | undefined {
+    return this.user?.id;
+  }
   getUserSubject(): Observable<User | undefined> {
     return this.userSubject.asObservable();
   }

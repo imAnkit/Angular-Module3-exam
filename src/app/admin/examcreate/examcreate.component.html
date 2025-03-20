@@ -1,12 +1,96 @@
-<h2>Create Exam</h2>
-<input [(ngModel)]="title" placeholder="Exam Title" />
-<button (click)="addQuestion()">Add Question</button>
+<!-- <app-navbar></app-navbar> -->
 
-<div *ngFor="let q of questions; let i = index">
-  <input [(ngModel)]="q.question" placeholder="Enter Question" />
-  <div *ngFor="let option of q.options; let j = index">
-    <input [(ngModel)]="q.options[j]" placeholder="Option {{ j + 1 }}" />
+<div class="container mt-4">
+  <h2>Create New Exam</h2>
+
+  <!-- Exam Title -->
+  <div class="mb-3">
+    <label for="examTitle" class="form-label">Exam Title</label>
+    <input
+      type="text"
+      id="examTitle"
+      [(ngModel)]="examTitle"
+      class="form-control"
+      placeholder="Enter Exam Title"
+    />
   </div>
-  <input [(ngModel)]="q.correctAnswer" placeholder="correctAnswer" />
+
+  <hr />
+
+  <!-- List of Added Questions -->
+  <h4 class="mt-4">Questions Added</h4>
+  <div *ngIf="questions.length === 0" class="alert alert-info">
+    No questions added yet.
+  </div>
+
+  <div *ngFor="let q of questions; let i = index" class="card mb-3">
+    <div class="card-body">
+      <h5>Question {{ i + 1 }}:</h5>
+      <p>{{ q.questionText }}</p>
+      <ul class="list-group mb-2">
+        <li class="list-group-item" *ngFor="let opt of q.options">
+          {{ opt }}
+        </li>
+      </ul>
+      <p><strong>Correct Option:</strong> {{ q.correctOption }}</p>
+      <button class="btn btn-danger btn-sm" (click)="removeQuestion(i)">
+        Remove
+      </button>
+    </div>
+  </div>
+
+  <hr />
+
+  <!-- Add New Question Form -->
+  <h4 class="mt-4">Add New Question</h4>
+
+  <div class="mb-3">
+    <label for="questionText" class="form-label">Question</label>
+    <input
+      type="text"
+      id="questionText"
+      [(ngModel)]="newQuestion.questionText"
+      class="form-control"
+      placeholder="Enter question text"
+    />
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Options</label>
+    <div
+      *ngFor="let opt of newQuestion.options; let idx = index"
+      class="input-group mb-2"
+    >
+      <input
+        type="text"
+        [(ngModel)]="newQuestion.options[idx]"
+        class="form-control"
+        placeholder="Option {{ idx + 1 }}"
+      />
+      <button class="btn btn-outline-danger" (click)="removeOption(idx)">
+        Remove
+      </button>
+    </div>
+    <button class="btn btn-outline-primary btn-sm" (click)="addOption()">
+      Add Option
+    </button>
+  </div>
+
+  <div class="mb-3">
+    <label for="correctOption" class="form-label">Correct Option</label>
+    <input
+      type="text"
+      id="correctOption"
+      [(ngModel)]="newQuestion.correctOption"
+      class="form-control"
+      placeholder="Enter correct option"
+    />
+  </div>
+
+  <button class="btn btn-primary" (click)="addQuestion()">Add Question</button>
+
+  <hr />
+
+  <!-- Save Exam -->
+  <button class="btn btn-success mt-3" (click)="saveExam()">Save Exam</button>
 </div>
-<button (click)="createExam()">Create Exam</button>

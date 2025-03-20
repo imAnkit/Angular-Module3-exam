@@ -8,8 +8,10 @@ import { StudentService } from '../../services/student.service';
 })
 export class StudentdashboardComponent implements OnInit {
   exams: any[] = [];
+
   constructor(private studentService: StudentService) {}
-  ngOnInit(): void {
+
+  ngOnInit() {
     this.studentService.getAvailableExams().subscribe((data) => {
       this.exams = data;
     });

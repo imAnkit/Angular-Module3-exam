@@ -1,8 +1,24 @@
-<h2>Available Exams</h2>
-<ul>
-  <li *ngFor="let exam of exams">
-    {{ exam.title }} -
-    <a [routerLink]="['/student/take-exam', exam.id]">Take Exam</a>
-  </li>
-</ul>
-<a routerLink="/student/results">View results</a>
+<!-- <app-navbar></app-navbar> -->
+
+<div class="container">
+  <h2>Available Exams</h2>
+
+  <div *ngIf="exams.length === 0" class="alert alert-info">
+    No exams available at the moment.
+  </div>
+
+  <ul class="list-group mt-3">
+    <li
+      class="list-group-item d-flex justify-content-between align-items-center"
+      *ngFor="let exam of exams"
+    >
+      <span>{{ exam.title }}</span>
+      <button
+        [routerLink]="['/student/take-exam', exam.id]"
+        class="btn btn-primary btn-sm"
+      >
+        Take Exam
+      </button>
+    </li>
+  </ul>
+</div>
