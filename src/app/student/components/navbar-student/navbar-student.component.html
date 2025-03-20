@@ -1,29 +1,65 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand">Student Panel</a>
+<nav
+  class="row-container"
+  style="
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--primary--color);
+    padding: 16px 24px;
+    border-radius: var(--border--radius);
+  "
+>
+  <div class="row-container" style="gap: 40px; align-items: center">
+    <a
+      style="
+        color: #ffffff;
+        font-size: 20px;
+        font-weight: 600;
+        text-decoration: none;
+      "
+      >Student Panel</a
+    >
 
-    <div class="collapse navbar-collapse" id="studentNavbar">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <!-- Dashboard -->
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/student" routerLinkActive="active">
-            Dashboard
-          </a>
-        </li>
+    <ul class="row-container" style="gap: 20px; list-style: none">
+      <li>
+        <a
+          routerLink="/student"
+          routerLinkActive="active"
+          style="
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+          "
+        >
+          Dashboard
+        </a>
+      </li>
 
-        <!-- Results -->
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            routerLink="/student/results"
-            routerLinkActive="active"
-          >
-            Results
-          </a>
-        </li>
-      </ul>
-
-      <button class="btn btn-outline-light" (click)="logout()">Logout</button>
-    </div>
+      <li>
+        <a
+          routerLink="/student/results"
+          routerLinkActive="active"
+          style="
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+          "
+        >
+          Results
+        </a>
+      </li>
+    </ul>
   </div>
+  <button
+    class="destructive-btn"
+    style="
+      background-color: #ffffff;
+      color: var(--error--color);
+      font-weight: 600;
+    "
+    (click)="logout()"
+  >
+    Logout
+  </button>
 </nav>

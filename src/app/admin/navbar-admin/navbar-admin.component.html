@@ -1,45 +1,62 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Admin Panel</a>
-
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#adminNavbar"
-      aria-controls="adminNavbar"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
+<nav
+  class="row-container"
+  style="
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--primary--color);
+    padding: 16px 24px;
+    border-radius: var(--border--radius);
+  "
+>
+  <div class="row-container" style="gap: 40px; align-items: center">
+    <a
+      style="
+        color: #ffffff;
+        font-size: 20px;
+        font-weight: 600;
+        text-decoration: none;
+      "
+      >Admin Panel</a
     >
-      <span class="navbar-toggler-icon"></span>
-    </button>
 
-    <div class="collapse navbar-collapse" id="adminNavbar">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <!-- Exam List -->
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            routerLink="/admin/exams"
-            routerLinkActive="active"
-          >
-            Exams
-          </a>
-        </li>
-
-        <!-- Create Exam -->
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            routerLink="/admin/create-exam"
-            routerLinkActive="active"
-          >
-            Create Exam
-          </a>
-        </li>
-      </ul>
-
-      <button class="btn btn-outline-light" (click)="logout()">Logout</button>
-    </div>
+    <ul class="row-container" style="gap: 20px; list-style: none">
+      <li>
+        <a
+          routerLink="/admin/exam-list"
+          routerLinkActive="active"
+          style="
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+          "
+          >Exams</a
+        >
+      </li>
+      <li>
+        <a
+          routerLink="/admin/create"
+          routerLinkActive="active"
+          style="
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+          "
+          >Create Exam</a
+        >
+      </li>
+    </ul>
   </div>
+  <button
+    (click)="logout()"
+    class="destructive-btn"
+    style="
+      background-color: #ffffff;
+      color: var(--error--color);
+      font-weight: 600;
+    "
+  >
+    Logout
+  </button>
 </nav>

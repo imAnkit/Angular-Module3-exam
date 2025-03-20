@@ -1,4 +1,3 @@
-import { Type } from './Type';
 export class User {
   constructor(
     readonly id: string,

@@ -1,13 +1,11 @@
 <!-- <app-navbar></app-navbar> -->
 
-<div class="container">
+<div class="results-container">
   <h2>Your Exam Results</h2>
 
-  <div *ngIf="results.length === 0" class="alert alert-info">
-    No results found.
-  </div>
+  <div *ngIf="results.length === 0" class="info-alert">No results found.</div>
 
-  <table class="table mt-3" *ngIf="results.length > 0">
+  <table class="results-table" *ngIf="results.length > 0">
     <thead>
       <tr>
         <th>Exam Name</th>

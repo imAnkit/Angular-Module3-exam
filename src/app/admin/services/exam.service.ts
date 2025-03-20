@@ -14,12 +14,10 @@ export class ExamService {
   private baseUrl = `${BASE_URL}/exams`;
   constructor(private http: HttpClient) {}
 
-  // Create an exam
   createExam(examData: any): Observable<any> {
     return this.http.post(`${this.baseUrl}.json`, examData);
   }
 
-  // Get all exams
   getExams(): Observable<any[]> {
     return this.http.get(`${this.baseUrl}.json`).pipe(
       map((response: any) => {
@@ -33,7 +31,6 @@ export class ExamService {
     );
   }
 
-  // Get a single exam by ID
   getExamById(id: string): Observable<any> {
     return this.http.get(`${this.baseUrl}/${id}.json`).pipe(
       map((exam: any) => ({
@@ -43,7 +40,6 @@ export class ExamService {
     );
   }
 
-  // Delete an exam
   deleteExam(id: string): Observable<any> {
     return this.http.delete(`${this.baseUrl}/${id}.json`);
   }

@@ -1,10 +1,11 @@
 <app-loader *ngIf="isLoading"></app-loader>
 
 <form
-  class="card-container col-container form-container"
+  class="card-container col-container"
   *ngIf="!isLoading && !errorMessage"
   #formContainer="ngForm"
   (ngSubmit)="onSubmitClck()"
+  style="max-width: 400px; margin: 40px auto"
 >
   <h2>Login User</h2>
 
@@ -20,6 +21,7 @@
     />
     <p class="error-text" *ngIf="email.touched && email.invalid">Email empty</p>
   </div>
+
   <div class="col-container">
     <input
       type="password"
@@ -35,11 +37,18 @@
     </p>
   </div>
 
-  <div class="row-container">
-    <button class="flex" type="submint" [disabled]="formContainer.invalid">
-      Login
-    </button>
-    <button class="flex" type="button" (click)="onGoToSignUp()">
+  <div
+    class="row-container"
+    style="justify-content: space-between; margin-top: 20px"
+  >
+    <button type="submit" [disabled]="formContainer.invalid">Login</button>
+
+    <button
+      type="button"
+      class="secondary-btn"
+      (click)="onGoToSignUp()"
+      style="background-color: var(--confirm--color)"
+    >
       Go to signup
     </button>
   </div>

@@ -77,7 +77,6 @@ export class TakeExamComponent implements OnInit, OnDestroy {
   nextQuestion() {
     if (!this.selectedOption) return;
 
-    // Check if selected option is correct
     if (this.selectedOption === this.currentQuestion.correctOption) {
       this.score++;
     }

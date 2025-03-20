@@ -1,22 +1,39 @@
 <!-- <app-navbar></app-navbar> -->
 
-<div class="container">
+<div class="col-container" style="max-width: 800px; margin: 40px auto">
   <h2>All Exams</h2>
 
-  <button routerLink="/admin/create" class="btn btn-primary">
+  <button
+    routerLink="/admin/create"
+    class="secondary-btn"
+    style="width: fit-content"
+  >
     Create New Exam
   </button>
 
-  <div *ngIf="exams.length === 0" class="alert alert-info">No exams found.</div>
+  <div
+    *ngIf="exams.length === 0"
+    class="card-container"
+    style="background-color: var(--card--variant--color); text-align: center"
+  >
+    No exams found.
+  </div>
 
-  <ul class="list-group mt-3">
-    <li class="list-group-item" *ngFor="let exam of exams">
-      <div class="d-flex justify-content-between align-items-center">
-        <span>{{ exam.title }}</span>
-        <button (click)="deleteExam(exam.id)" class="btn btn-danger btn-sm">
-          Delete
-        </button>
-      </div>
+  <ul class="col-container" style="margin-top: 24px">
+    <li
+      class="card-container row-container"
+      style="justify-content: space-between; align-items: center"
+      *ngFor="let exam of exams"
+    >
+      <span style="font-weight: 500">{{ exam.title }}</span>
+
+      <button
+        (click)="deleteExam(exam.id)"
+        class="destructive-btn"
+        style="padding: 8px 12px; font-size: 14px"
+      >
+        Delete
+      </button>
     </li>
   </ul>
 </div>

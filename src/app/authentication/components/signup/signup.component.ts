@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { Type } from 'src/app/models/user/Type';
 
 @Component({
   selector: 'app-signup',

@@ -1,44 +1,21 @@
-<!-- <div class="container">
+<div class="exams-container">
   <h2>Available Exams</h2>
 
-  <div *ngIf="exams.length === 0" class="alert alert-info">
-    No exams available at the moment.
-  </div>
-
-  <ul class="list-group mt-3">
-    <li
-      class="list-group-item d-flex justify-content-between align-items-center"
-      *ngFor="let exam of exams"
-    >
-      <span>{{ exam.title }}</span>
-      <button
-        [routerLink]="['/student/take-exam', exam.id]"
-        class="btn btn-primary btn-sm"
-      >
-        Take Exam
-      </button>
-    </li>
-  </ul>
-</div> -->
-
-<div class="container mt-4">
-  <h2>Available Exams</h2>
-
-  <div *ngIf="availableExams.length === 0" class="alert alert-info">
+  <div *ngIf="availableExams.length === 0" class="info-alert">
     You have completed all available exams!
   </div>
 
-  <div class="list-group" *ngIf="availableExams.length > 0">
+  <div *ngIf="availableExams.length > 0" class="exam-list">
     <a
       *ngFor="let exam of availableExams"
-      class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+      class="exam-list-item"
       [routerLink]="['/student/take-exam', exam.id]"
     >
-      <div>
+      <div class="exam-details">
         <h5>{{ exam.title }}</h5>
         <small>{{ exam.description }}</small>
       </div>
-      <span class="badge bg-primary rounded-pill">Start Exam</span>
+      <span class="start-exam-badge">Start Exam</span>
     </a>
   </div>
 </div>

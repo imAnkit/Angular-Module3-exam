@@ -1,12 +1,14 @@
 <app-loader *ngIf="isLoading"></app-loader>
 
 <form
-  class="card-container col-container form-container"
+  class="card-container col-container"
   *ngIf="!isLoading && !errorMessage"
   #formContainer="ngForm"
   (ngSubmit)="onSubmit()"
+  style="max-width: 400px; margin: 40px auto"
 >
   <h2>Register User</h2>
+
   <div class="col-container">
     <input
       type="text"
@@ -31,6 +33,7 @@
     />
     <p class="error-text" *ngIf="email.touched && email.invalid">Email empty</p>
   </div>
+
   <div class="col-container">
     <input
       type="password"
@@ -45,26 +48,41 @@
       Give a valid password.
     </p>
   </div>
+
   <div class="col-container">
-    <label for="userType">Select User Type</label>
+    <label for="userType" style="font-weight: 500">Select User Type</label>
     <select
       id="userType"
       name="userType"
       required
       [(ngModel)]="userInput.type"
       #userType="ngModel"
+      style="
+        padding: var(--padding--small);
+        border-radius: var(--border--radius);
+        border: 1px solid var(--card--variant--color);
+        background-color: #ffffff;
+        color: var(--on--background--color);
+      "
     >
-      <option value="">--Select User Type --</option>
+      <option value="">--Select User Type--</option>
       <option value="student">Student</option>
       <option value="admin">Admin</option>
     </select>
   </div>
 
-  <div class="row-container">
-    <button class="flex" type="submint" [disabled]="formContainer.invalid">
-      Register
-    </button>
-    <button class="flex" type="button" (click)="onGoToLogin()">
+  <div
+    class="row-container"
+    style="justify-content: space-between; margin-top: 20px"
+  >
+    <button type="submit" [disabled]="formContainer.invalid">Register</button>
+
+    <button
+      type="button"
+      class="secondary-btn"
+      (click)="onGoToLogin()"
+      style="background-color: var(--confirm--color)"
+    >
       Go to Login
     </button>
   </div>

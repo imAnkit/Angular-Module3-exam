@@ -18,13 +18,11 @@ export class ResultviewComponent implements OnInit {
   }
 
   private loadExamsAndResults() {
-    // Load all exams first
     this.studentExamService.getAvailableExams().subscribe({
       next: (exams) => {
         this.exams = exams;
         this.buildExamTitlesMap();
 
-        // Once exams are loaded, fetch results
         this.studentExamService.getResults().subscribe({
           next: (results) => {
             this.results = results;

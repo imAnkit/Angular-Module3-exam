@@ -35,7 +35,6 @@ export class StudentdashboardComponent implements OnInit {
       return;
     }
 
-    // Get all exams
     this.studentExamService.getAvailableExams().subscribe((examList) => {
       this.exams = examList || [];
       this.studentExamService.getResults().subscribe((resultList) => {

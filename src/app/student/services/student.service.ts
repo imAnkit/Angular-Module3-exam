@@ -17,7 +17,6 @@ export class StudentService {
     private profileService: ProfileService
   ) {}
 
-  // Get all available exams for students
   getAvailableExams(): Observable<any[]> {
     return this.http.get(`${this.baseExamsUrl}.json`).pipe(
       map((response: any) => {
@@ -31,7 +30,6 @@ export class StudentService {
     );
   }
 
-  // Get a single exam by its ID
   getExamById(examId: string): Observable<any> {
     return this.http.get(`${this.baseExamsUrl}/${examId}.json`).pipe(
       map((exam: any) => ({
@@ -41,7 +39,6 @@ export class StudentService {
     );
   }
 
-  // Save result for the current student
   saveResult(result: any): Observable<any> {
     const userId = this.profileService.getUserId();
 
@@ -52,7 +49,6 @@ export class StudentService {
     return this.http.post(`${this.baseResultsUrl}/${userId}.json`, result);
   }
 
-  // Get results for the current student
   getResults(): Observable<any[]> {
     const userId = this.profileService.getUserId();
 

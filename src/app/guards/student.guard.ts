@@ -8,7 +8,6 @@ import {
   UrlTree,
 } from '@angular/router';
 import { ProfileService } from '../authentication/services/profile.service';
-import { Observable } from 'rxjs';
 
 // @Injectable({
 //   providedIn: 'root',

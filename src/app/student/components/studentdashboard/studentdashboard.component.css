@@ -1,0 +1,56 @@
+.exams-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: var(--padding--medium);
+  background-color: var(--background--color);
+  color: var(--on--background--color);
+  border-radius: var(--border--radius);
+}
+
+.info-alert {
+  background-color: var(--info--color);
+  color: var(--on--info--color);
+  padding: var(--padding--small);
+  border-radius: var(--border--radius);
+  text-align: center;
+}
+
+.exam-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.exam-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--surface--variant--color);
+  color: var(--on--surface--variant--color);
+  padding: var(--padding--medium);
+  border-radius: var(--border--radius);
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.exam-list-item:hover {
+  background-color: var(--surface--highlight--color);
+}
+
+.exam-details h5 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.exam-details small {
+  color: var(--on--surface--disabled--color);
+}
+
+.start-exam-badge {
+  background-color: var(--primary--color);
+  color: var(--on--primary--color);
+  padding: 6px 12px;
+  border-radius: var(--border--radius--pill);
+  font-size: 0.85rem;
+}

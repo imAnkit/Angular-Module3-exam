@@ -1,94 +1,124 @@
-<div class="col-container">
+<!-- <app-navbar></app-navbar> -->
+
+<div class="col-container" style="max-width: 800px; margin: 40px auto">
   <h2>Create New Exam</h2>
 
-  <!-- Exam Title -->
-  <div class="mb-3">
-    <label for="examTitle" class="form-label">Exam Title</label>
+  <div class="col-container card-container">
+    <label for="examTitle" style="font-weight: 500">Exam Title</label>
     <input
       type="text"
       id="examTitle"
       [(ngModel)]="examTitle"
-      class="form-control"
       placeholder="Enter Exam Title"
     />
   </div>
 
   <hr />
 
-  <!-- List of Added Questions -->
-  <h4 class="mt-4">Questions Added</h4>
-  <div *ngIf="questions.length === 0" class="alert alert-info">
+  <h3>Questions Added</h3>
+  <div
+    *ngIf="questions.length === 0"
+    class="card-container"
+    style="background-color: var(--card--variant--color); text-align: center"
+  >
     No questions added yet.
   </div>
 
-  <div *ngFor="let q of questions; let i = index" class="card mb-3">
-    <div class="card-body">
-      <h5>Question {{ i + 1 }}:</h5>
-      <p>{{ q.questionText }}</p>
-      <ul class="list-group mb-2">
-        <li class="list-group-item" *ngFor="let opt of q.options">
-          {{ opt }}
-        </li>
-      </ul>
-      <p><strong>Correct Option:</strong> {{ q.correctOption }}</p>
-      <button class="btn btn-danger btn-sm" (click)="removeQuestion(i)">
-        Remove
-      </button>
-    </div>
+  <div
+    *ngFor="let q of questions; let i = index"
+    class="card-container"
+    style="margin-bottom: 16px"
+  >
+    <h4>Question {{ i + 1 }}:</h4>
+    <p>{{ q.questionText }}</p>
+
+    <ul class="col-container" style="padding-left: 20px">
+      <li *ngFor="let opt of q.options" style="list-style: disc">
+        {{ opt }}
+      </li>
+    </ul>
+
+    <p><strong>Correct Option:</strong> {{ q.correctOption }}</p>
+
+    <button
+      class="destructive-btn"
+      style="padding: 8px 12px; font-size: 14px"
+      (click)="removeQuestion(i)"
+    >
+      Remove
+    </button>
   </div>
 
   <hr />
 
-  <!-- Add New Question Form -->
-  <h4 class="mt-4">Add New Question</h4>
+  <h3>Add New Question</h3>
 
-  <div class="mb-3">
-    <label for="questionText" class="form-label">Question</label>
+  <div class="col-container card-container">
+    <label for="questionText" style="font-weight: 500">Question</label>
     <input
       type="text"
       id="questionText"
       [(ngModel)]="newQuestion.questionText"
-      class="form-control"
       placeholder="Enter question text"
     />
   </div>
 
-  <div class="mb-3">
-    <label class="form-label">Options</label>
+  <div class="col-container card-container">
+    <label style="font-weight: 500">Options</label>
+
     <div
       *ngFor="let opt of newQuestion.options; let idx = index"
-      class="input-group mb-2"
+      class="row-container"
     >
       <input
         type="text"
         [(ngModel)]="newQuestion.options[idx]"
-        class="form-control"
         placeholder="Option {{ idx + 1 }}"
+        style="flex: 1"
       />
-      <button class="btn btn-outline-danger" (click)="removeOption(idx)">
+      <button
+        class="destructive-btn"
+        style="padding: 8px 12px"
+        (click)="removeOption(idx)"
+      >
         Remove
       </button>
     </div>
-    <button class="btn btn-outline-primary btn-sm" (click)="addOption()">
+
+    <button
+      class="secondary-btn"
+      style="width: fit-content"
+      (click)="addOption()"
+    >
       Add Option
     </button>
   </div>
 
-  <div class="mb-3">
-    <label for="correctOption" class="form-label">Correct Option</label>
+  <div class="col-container card-container">
+    <label for="correctOption" style="font-weight: 500">Correct Option</label>
     <input
       type="text"
       id="correctOption"
       [(ngModel)]="newQuestion.correctOption"
-      class="form-control"
       placeholder="Enter correct option"
     />
   </div>
 
-  <button class="btn btn-primary" (click)="addQuestion()">Add Question</button>
+  <button
+    class="secondary-btn"
+    style="margin-top: 12px"
+    (click)="addQuestion()"
+  >
+    Add Question
+  </button>
 
   <hr />
 
-  <!-- Save Exam -->
-  <button class="btn btn-success mt-3" (click)="saveExam()">Save Exam</button>
+  <button
+    class="secondary-btn"
+    style="margin-top: 24px; padding: 16px; font-size: 16px"
+    (click)="saveExam()"
+  >
+    Save Exam
+  </button>
 </div>

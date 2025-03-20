@@ -35,7 +35,6 @@ export class ExamlistComponent implements OnInit {
     this.examService.deleteExam(examId).subscribe({
       next: () => {
         alert('Exam deleted successfully!');
-        // Refresh the exam list
         this.loadExams();
       },
       error: (err) => {

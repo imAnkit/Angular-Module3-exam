@@ -15,7 +15,6 @@ const adminRoutes: Routes = [
       { path: '', redirectTo: 'exam-list', pathMatch: 'full' },
       { path: 'exam-list', component: ExamlistComponent },
       { path: 'create', component: ExamcreateComponent },
-      // { path: 'review/:examId', component: ExamreviewComponent },
     ],
   },
 ];

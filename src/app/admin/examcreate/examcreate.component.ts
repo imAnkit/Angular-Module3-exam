@@ -42,10 +42,8 @@ export class ExamcreateComponent {
       return;
     }
 
-    // Push the new question to the list
     this.questions.push({ ...this.newQuestion });
 
-    // Reset the question form
     this.newQuestion = {
       questionText: '',
       options: [],
