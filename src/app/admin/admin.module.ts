@@ -20,7 +20,12 @@ const adminRoutes: Routes = [
   },
 ];
 @NgModule({
-  declarations: [AdminComponent, ExamlistComponent, ExamcreateComponent, NavbarAdminComponent],
+  declarations: [
+    AdminComponent,
+    ExamlistComponent,
+    ExamcreateComponent,
+    NavbarAdminComponent,
+  ],
   imports: [CommonModule, RouterModule.forChild(adminRoutes), FormsModule],
 })
 export class AdminModule {}

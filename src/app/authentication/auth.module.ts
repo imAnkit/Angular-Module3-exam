@@ -5,6 +5,7 @@ import { SigninComponent } from './components/signin/signin.component';
 import { AuthComponent } from './auth.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 const authRoutes: Routes = [
   {
@@ -20,6 +21,11 @@ const authRoutes: Routes = [
 
 @NgModule({
   declarations: [AuthComponent, SignupComponent, SigninComponent],
-  imports: [CommonModule, RouterModule.forChild(authRoutes), FormsModule],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(authRoutes),
+    FormsModule,
+    SharedModule,
+  ],
 })
 export class AuthenticationModule {}

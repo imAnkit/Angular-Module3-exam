@@ -6,5 +6,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./loader.component.css'],
 })
 export class LoaderComponent {
-  @Input('isLoading') isLoading: boolean = false;
+  @Input() message: string = 'Loading...';
 }
