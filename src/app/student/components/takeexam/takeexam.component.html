@@ -1,0 +1,23 @@
+<h2>{{ exam?.title }}</h2>
+
+<div *ngIf="exam?.questions[currentQuestionIndex]">
+  <p>{{ exam.questions[currentQuestionIndex].question }}</p>
+  <div *ngFor="let option of exam.questions[currentQuestionIndex].options">
+    <input type="radio" [(ngModel)]="selectedAnswer" [value]="option" />
+    {{ option }}
+  </div>
+  <button
+    (click)="nextQuestion()"
+    *ngIf="currentQuestionIndex < exam.questions.length - 1"
+  >
+    Next
+  </button>
+  <button
+    (click)="submitExam()"
+    *ngIf="currentQuestionIndex === exam.questions.length - 1"
+  >
+    Submit
+  </button>
+</div>
+
+<p>Time Left: {{ timeLeft }}</p>

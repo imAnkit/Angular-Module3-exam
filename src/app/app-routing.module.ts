@@ -1,23 +1,25 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './componens/login/login/login.component';
-import { DashboardComponent } from './componens/dashboard/dashboard.component';
-import { AuthGuard } from './guards/auth.guard';
-import { ExamComponent } from './componens/exam/exam.component';
-import { AdminComponent } from './componens/admin/admin.component';
-import { ExaminerComponent } from './componens/examiner/examiner.component';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
+  { path: '', redirectTo: 'auth', pathMatch: 'full' },
   {
-    path: 'dashboard',
-    component: DashboardComponent,
-    canActivate: [AuthGuard],
+    path: 'auth',
+    loadChildren: () =>
+      import('./authentication/auth.module').then(
+        (m) => m.AuthenticationModule
+      ),
   },
-  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
-  { path: 'examiner', component: ExaminerComponent, canActivate: [AuthGuard] },
-  { path: 'exam/:id', component: ExamComponent, canActivate: [AuthGuard] },
-  { path: '**', redirectTo: 'login' },
+  {
+    path: 'admin',
+    loadChildren: () =>
+      import('./admin/admin.module').then((m) => m.AdminModule),
+  },
+  {
+    path: 'student',
+    loadChildren: () =>
+      import('./student/student.module').then((m) => m.StudentModule),
+  },
 ];
 
 @NgModule({

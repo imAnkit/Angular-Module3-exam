@@ -1,0 +1,8 @@
+<h2>Available Exams</h2>
+<ul>
+  <li *ngFor="let exam of exams">
+    {{ exam.title }} -
+    <a [routerLink]="['/student/take-exam', exam.id]">Take Exam</a>
+  </li>
+</ul>
+<a routerLink="/student/results">View results</a>

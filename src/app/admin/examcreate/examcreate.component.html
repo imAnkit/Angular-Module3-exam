@@ -1,0 +1,12 @@
+<h2>Create Exam</h2>
+<input [(ngModel)]="title" placeholder="Exam Title" />
+<button (click)="addQuestion()">Add Question</button>
+
+<div *ngFor="let q of questions; let i = index">
+  <input [(ngModel)]="q.question" placeholder="Enter Question" />
+  <div *ngFor="let option of q.options; let j = index">
+    <input [(ngModel)]="q.options[j]" placeholder="Option {{ j + 1 }}" />
+  </div>
+  <input [(ngModel)]="q.correctAnswer" placeholder="correctAnswer" />
+</div>
+<button (click)="createExam()">Create Exam</button>

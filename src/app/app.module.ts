@@ -4,16 +4,23 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { LoginComponent } from './componens/login/login/login.component';
 import { FormsModule } from '@angular/forms';
-import { DashboardComponent } from './componens/dashboard/dashboard.component';
-import { ExamComponent } from './componens/exam/exam.component';
-import { AdminComponent } from './componens/admin/admin.component';
-import { ExaminerComponent } from './componens/examiner/examiner.component';
+
+import { AuthenticationModule } from './authentication/auth.module';
+import { StudentModule } from './student/student.module';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, DashboardComponent, ExamComponent, AdminComponent, ExaminerComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    AuthenticationModule,
+    StudentModule,
+    AdminModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

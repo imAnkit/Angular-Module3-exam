@@ -1,0 +1,11 @@
+<h2>Review Exam</h2>
+<ul>
+  <li *ngFor="let submission of submissions">
+    student: {{ submission.studentName }} - score:
+    {{ submission.score || "Not Graded" }}
+    <input [(ngModel)]="submission.score" />
+    <button (click)="gradeSubmission(submission.id, submission.score)">
+      Grade
+    </button>
+  </li>
+</ul>
