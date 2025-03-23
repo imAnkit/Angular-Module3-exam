@@ -1,15 +1,16 @@
-<div class="exam-container" *ngIf="exam">
-  <h2>{{ exam.title }}</h2>
+<div class="col-container exam-container" *ngIf="exam">
+  <h2 class="exam-title">{{ exam.title }}</h2>
 
   <div *ngIf="currentQuestionIndex < exam.questions.length; else finishedExam">
-    <div class="card-container">
-      <div class="card-body">
+    <div class="card-container question-card">
+      <div class="col-container">
         <h5 class="question-header">
           Question {{ currentQuestionIndex + 1 }} of {{ exam.questions.length }}
         </h5>
+
         <p class="question-text">{{ currentQuestion.questionText }}</p>
 
-        <ul class="options-list">
+        <ul class="options-list col-container">
           <li
             *ngFor="let option of currentQuestion.options"
             class="option-item"
@@ -21,13 +22,13 @@
         </ul>
 
         <div class="timer-container">
-          <p>
+          <p class="timer-text">
             Time Left: <strong>{{ timer }}s</strong>
           </p>
         </div>
 
         <button
-          class="primary-btn"
+          class="primary-btn next-btn"
           (click)="nextQuestion()"
           [disabled]="!selectedOption"
         >
@@ -37,8 +38,9 @@
     </div>
   </div>
 
+  <!-- to show after exam is finished -->
   <ng-template #finishedExam>
-    <div class="success-alert">
+    <div class="success-alert exam-finished-alert">
       <h4>Exam Submitted!</h4>
       <p>Your score is: {{ score }} / {{ exam.questions.length }}</p>
       <button class="secondary-btn" routerLink="/student/results">

@@ -60,7 +60,11 @@
     <label class="form-label">Options</label>
 
     <div
-      *ngFor="let opt of newQuestion.options; let idx = index"
+      *ngFor="
+        let opt of newQuestion.options;
+        let idx = index;
+        trackBy: trackByIndex
+      "
       class="row-container option-row"
     >
       <input

@@ -82,4 +82,7 @@ export class ExamcreateComponent {
       },
     });
   }
+  trackByIndex(index: number, item: any): number {
+    return index;
+  }
 }
