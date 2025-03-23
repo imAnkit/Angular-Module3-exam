@@ -6,10 +6,10 @@
 //   UrlTree,
 // } from '@angular/router';
 // import { Observable } from 'rxjs';
-// import { ProfileService } from '../authentication/services/profile.service';
+// import { manageService } from '../authentication/services/profile.service';
 
 // export class AuthGuard implements CanActivate {
-//   constructor(private profileService: ProfileService, private router: Router) {}
+//   constructor(private manageService: manageService, private router: Router) {}
 
 //   canActivate(
 //     route: ActivatedRouteSnapshot,
@@ -19,7 +19,7 @@
 //     | Promise<boolean | UrlTree>
 //     | boolean
 //     | UrlTree {
-//     const user = this.profileService.getUser();
+//     const user = this.manageService.getUser();
 
 //     if (user) {
 //       return true;
@@ -30,13 +30,13 @@
 
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
-import { ProfileService } from '../authentication/services/profile.service';
+import { ManageService } from '../authentication/services/manage.service';
 
 export const authGuard: CanActivateFn = () => {
   const router = inject(Router);
-  const profileService = inject(ProfileService);
+  const manageService = inject(ManageService);
 
-  const user = profileService.getUser();
+  const user = manageService.getUser();
   if (user) return true;
 
   return router.createUrlTree(['/auth/login']);

@@ -1,10 +1,8 @@
-<!-- <app-navbar></app-navbar> -->
-
-<div class="col-container" style="max-width: 800px; margin: 40px auto">
+<div class="col-container create-exam-container">
   <h2>Create New Exam</h2>
 
   <div class="col-container card-container">
-    <label for="examTitle" style="font-weight: 500">Exam Title</label>
+    <label for="examTitle" class="form-label">Exam Title</label>
     <input
       type="text"
       id="examTitle"
@@ -15,46 +13,41 @@
 
   <hr />
 
+  <!-- for selecting previous questions-->
   <h3>Questions Added</h3>
+
   <div
     *ngIf="questions.length === 0"
-    class="card-container"
-    style="background-color: var(--card--variant--color); text-align: center"
+    class="card-container empty-question-card"
   >
     No questions added yet.
   </div>
 
   <div
     *ngFor="let q of questions; let i = index"
-    class="card-container"
-    style="margin-bottom: 16px"
+    class="card-container question-item"
   >
     <h4>Question {{ i + 1 }}:</h4>
     <p>{{ q.questionText }}</p>
 
-    <ul class="col-container" style="padding-left: 20px">
-      <li *ngFor="let opt of q.options" style="list-style: disc">
-        {{ opt }}
-      </li>
+    <ul class="col-container question-options">
+      <li *ngFor="let opt of q.options">{{ opt }}</li>
     </ul>
 
     <p><strong>Correct Option:</strong> {{ q.correctOption }}</p>
 
-    <button
-      class="destructive-btn"
-      style="padding: 8px 12px; font-size: 14px"
-      (click)="removeQuestion(i)"
-    >
+    <button class="destructive-btn remove-btn" (click)="removeQuestion(i)">
       Remove
     </button>
   </div>
 
   <hr />
 
+  <!-- for adding new questoin-->
   <h3>Add New Question</h3>
 
   <div class="col-container card-container">
-    <label for="questionText" style="font-weight: 500">Question</label>
+    <label for="questionText" class="form-label">Question</label>
     <input
       type="text"
       id="questionText"
@@ -64,38 +57,33 @@
   </div>
 
   <div class="col-container card-container">
-    <label style="font-weight: 500">Options</label>
+    <label class="form-label">Options</label>
 
     <div
       *ngFor="let opt of newQuestion.options; let idx = index"
-      class="row-container"
+      class="row-container option-row"
     >
       <input
         type="text"
         [(ngModel)]="newQuestion.options[idx]"
         placeholder="Option {{ idx + 1 }}"
-        style="flex: 1"
+        class="flex-grow"
       />
       <button
-        class="destructive-btn"
-        style="padding: 8px 12px"
+        class="destructive-btn option-remove-btn"
         (click)="removeOption(idx)"
       >
         Remove
       </button>
     </div>
 
-    <button
-      class="secondary-btn"
-      style="width: fit-content"
-      (click)="addOption()"
-    >
+    <button class="secondary-btn add-option-btn" (click)="addOption()">
       Add Option
     </button>
   </div>
 
   <div class="col-container card-container">
-    <label for="correctOption" style="font-weight: 500">Correct Option</label>
+    <label for="correctOption" class="form-label">Correct Option</label>
     <input
       type="text"
       id="correctOption"
@@ -104,21 +92,13 @@
     />
   </div>
 
-  <button
-    class="secondary-btn"
-    style="margin-top: 12px"
-    (click)="addQuestion()"
-  >
+  <button class="secondary-btn add-question-btn" (click)="addQuestion()">
     Add Question
   </button>
 
   <hr />
 
-  <button
-    class="secondary-btn"
-    style="margin-top: 24px; padding: 16px; font-size: 16px"
-    (click)="saveExam()"
-  >
+  <button class="secondary-btn save-exam-btn" (click)="saveExam()">
     Save Exam
   </button>
 </div>

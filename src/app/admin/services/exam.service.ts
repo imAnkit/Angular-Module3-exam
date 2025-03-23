@@ -1,12 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import {
-  BASE_URL,
-  FIREBASE_SIGN_IN_URL,
-  FIREBASE_SIGN_UP_URL,
-  USER_ENDPOINT,
-} from 'src/app/shared/constants/firebase';
+import { BASE_URL } from 'src/app/shared/constants/firebaseEnvironment';
 @Injectable({
   providedIn: 'root',
 })

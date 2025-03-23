@@ -5,7 +5,7 @@ import { User } from 'src/app/models/user/user';
 @Injectable({
   providedIn: 'root',
 })
-export class ProfileService {
+export class ManageService {
   private USER_DATA_TOKEN = 'USER_DATA';
   private user: User | undefined = undefined;
   private userSubject = new Subject<User | undefined>();

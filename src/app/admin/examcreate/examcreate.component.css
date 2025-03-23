@@ -1,0 +1,57 @@
+.create-exam-container {
+  max-width: 800px;
+  margin: 40px auto;
+}
+
+.form-label {
+  font-weight: 500;
+}
+
+.empty-question-card {
+  background-color: var(--card--variant--color);
+  text-align: center;
+}
+
+.question-item {
+  margin-bottom: 16px;
+}
+
+.question-options {
+  padding-left: 20px;
+}
+
+.question-options li {
+  list-style: disc;
+}
+
+.remove-btn {
+  padding: 8px 12px;
+  font-size: 14px;
+}
+
+.option-row {
+  gap: 16px;
+  align-items: center;
+}
+
+.flex-grow {
+  flex: 1;
+}
+
+.option-remove-btn {
+  padding: 8px 12px;
+}
+
+.add-option-btn {
+  width: fit-content;
+}
+
+.add-question-btn {
+  margin-top: 12px;
+}
+
+.save-exam-btn {
+  margin-top: 24px;
+  padding: 16px;
+  font-size: 16px;
+}

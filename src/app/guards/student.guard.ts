@@ -7,13 +7,13 @@ import {
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
-import { ProfileService } from '../authentication/services/profile.service';
+import { ManageService } from '../authentication/services/manage.service';
 
 // @Injectable({
 //   providedIn: 'root',
 // })
 // export class StudentGuard implements CanActivate {
-//   constructor(private profileService: ProfileService, private router: Router) {}
+//   constructor(private manageService: manageService, private router: Router) {}
 
 //   canActivate(
 //     route: ActivatedRouteSnapshot,
@@ -23,7 +23,7 @@ import { ProfileService } from '../authentication/services/profile.service';
 //     | Promise<boolean | UrlTree>
 //     | boolean
 //     | UrlTree {
-//     const user = this.profileService.getUser();
+//     const user = this.manageService.getUser();
 
 //     if (user && user.type === 'student') {
 //       return true;
@@ -38,9 +38,9 @@ import { ProfileService } from '../authentication/services/profile.service';
 // }
 export const studentGuard: CanActivateFn = () => {
   const router = inject(Router);
-  const profileService = inject(ProfileService);
+  const manageService = inject(ManageService);
 
-  const user = profileService.getUser();
+  const user = manageService.getUser();
   if (user && user.type === 'student') return true;
 
   return router.createUrlTree(['/auth/login']);

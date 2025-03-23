@@ -1,0 +1,138 @@
+.auth-container {
+  height: 100vh;
+  width: 100%;
+  background: #f7f9fc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-card {
+  background-color: #ffffff;
+  padding: 40px 30px;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.6s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.brand-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--primary--color);
+  margin-bottom: 10px;
+}
+
+.card-heading {
+  margin-bottom: 30px;
+  font-size: 18px;
+  color: #333333;
+}
+
+.input-wrapper {
+  position: relative;
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.floating-input {
+  width: 100%;
+  padding: 14px 12px;
+  border-radius: 8px;
+  border: 1px solid #cccccc;
+  outline: none;
+  font-size: 14px;
+  background: none;
+}
+
+.floating-input:focus {
+  border-color: var(--secondary--color);
+}
+
+.input-wrapper label {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  color: #999999;
+  font-size: 14px;
+  pointer-events: none;
+  transition: 0.2s ease all;
+  background-color: #ffffff;
+  padding: 0 4px;
+}
+
+.floating-input:focus + label,
+.floating-input:not(:placeholder-shown) + label {
+  top: -10px;
+  left: 8px;
+  font-size: 12px;
+  color: var(--secondary--color);
+}
+
+.error-msg {
+  color: var(--error--color);
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.btn {
+  width: 100%;
+  padding: 12px 0;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.primary-btn {
+  background-color: var(--secondary--color);
+  /* background-color: rebeccapurple; */
+  color: #ffffff;
+}
+
+.primary-btn:hover {
+  background-color: var(--primary--color);
+}
+
+.primary-btn:disabled {
+  background-color: #c0d4f7;
+  cursor: not-allowed;
+}
+
+.signup-link {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #777777;
+}
+
+.signup-link span {
+  color: var(--confirm--color);
+  cursor: pointer;
+  margin-left: 5px;
+  font-weight: 500;
+}
+
+.signup-link span:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 30px 20px;
+  }
+
+  .brand-title {
+    font-size: 24px;
+  }
+
+  .card-heading {
+    font-size: 16px;
+  }
+}

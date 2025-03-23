@@ -1,0 +1,31 @@
+.exam-list-container {
+  max-width: 800px;
+  margin: 40px auto;
+}
+
+.create-exam-btn {
+  width: fit-content;
+}
+
+.empty-exam-card {
+  background-color: var(--card--variant--color);
+  text-align: center;
+}
+
+.exam-list {
+  margin-top: 24px;
+}
+
+.exam-item {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.exam-title {
+  font-weight: 500;
+}
+
+.delete-exam-btn {
+  padding: 8px 12px;
+  font-size: 14px;
+}

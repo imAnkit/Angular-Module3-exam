@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProfileService } from 'src/app/authentication/services/profile.service';
+import { ManageService } from 'src/app/authentication/services/manage.service';
 
 @Component({
   selector: 'app-navbar-student',
@@ -8,10 +8,10 @@ import { ProfileService } from 'src/app/authentication/services/profile.service'
   styleUrls: ['./navbar-student.component.css'],
 })
 export class NavbarStudentComponent {
-  constructor(private profileService: ProfileService, private router: Router) {}
+  constructor(private manageService: ManageService, private router: Router) {}
 
   logout(): void {
-    this.profileService.logout();
+    this.manageService.logout();
     this.router.navigate(['/login']);
   }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StudentService } from '../../services/student.service';
-import { ProfileService } from 'src/app/authentication/services/profile.service';
+import { ManageService } from 'src/app/authentication/services/manage.service';
 
 @Component({
   selector: 'app-studentdashboard',
@@ -20,7 +20,7 @@ export class StudentdashboardComponent implements OnInit {
   availableExams: any[] = [];
   constructor(
     private studentExamService: StudentService,
-    private profileService: ProfileService
+    private manageService: ManageService
   ) {}
 
   ngOnInit(): void {
@@ -28,7 +28,7 @@ export class StudentdashboardComponent implements OnInit {
   }
 
   async loadExamsAndResults() {
-    const user = this.profileService.getUser();
+    const user = this.manageService.getUser();
 
     if (!user) {
       console.error('No logged in user');

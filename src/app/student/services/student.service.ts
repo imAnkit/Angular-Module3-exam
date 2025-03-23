@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable, throwError } from 'rxjs';
 import { AuthService } from 'src/app/authentication/services/auth.service';
-import { ProfileService } from 'src/app/authentication/services/profile.service';
-import { BASE_URL } from 'src/app/shared/constants/firebase';
+import { ManageService } from 'src/app/authentication/services/manage.service';
+import { BASE_URL } from 'src/app/shared/constants/firebaseEnvironment';
 
 @Injectable({
   providedIn: 'root',
@@ -12,10 +12,7 @@ export class StudentService {
   private baseExamsUrl = `${BASE_URL}/exams`;
   private baseResultsUrl = `${BASE_URL}/results`;
 
-  constructor(
-    private http: HttpClient,
-    private profileService: ProfileService
-  ) {}
+  constructor(private http: HttpClient, private manageService: ManageService) {}
 
   getAvailableExams(): Observable<any[]> {
     return this.http.get(`${this.baseExamsUrl}.json`).pipe(
@@ -40,7 +37,7 @@ export class StudentService {
   }
 
   saveResult(result: any): Observable<any> {
-    const userId = this.profileService.getUserId();
+    const userId = this.manageService.getUserId();
 
     if (!userId) {
       return throwError(() => new Error('User not found'));
@@ -50,7 +47,7 @@ export class StudentService {
   }
 
   getResults(): Observable<any[]> {
-    const userId = this.profileService.getUserId();
+    const userId = this.manageService.getUserId();
 
     if (!userId) {
       return throwError(() => new Error('User not found'));

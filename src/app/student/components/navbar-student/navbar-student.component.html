@@ -1,63 +1,32 @@
-<nav
-  class="row-container"
-  style="
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--primary--color);
-    padding: 16px 24px;
-    border-radius: var(--border--radius);
-  "
->
-  <div class="row-container" style="gap: 40px; align-items: center">
-    <a
-      style="
-        color: #ffffff;
-        font-size: 20px;
-        font-weight: 600;
-        text-decoration: none;
-      "
-      >Student Panel</a
-    >
+<nav class="app-navbar">
+  <div class="app-navbar-left">
+    <a class="app-navbar-title">Student Panel</a>
 
-    <ul class="row-container" style="gap: 20px; list-style: none">
+    <ul class="app-navbar-links">
       <li>
         <a
           routerLink="/student"
           routerLinkActive="active"
-          style="
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-          "
+          class="app-navbar-link"
         >
           Dashboard
         </a>
       </li>
-
       <li>
         <a
           routerLink="/student/results"
           routerLinkActive="active"
-          style="
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-          "
+          class="app-navbar-link"
         >
           Results
         </a>
       </li>
     </ul>
   </div>
+
   <button
-    class="destructive-btn"
-    style="
-      background-color: #ffffff;
-      color: var(--error--color);
-      font-weight: 600;
-    "
+    class="destructive-btn app-navbar-logout"
+    style="color: white"
     (click)="logout()"
   >
     Logout

@@ -1,36 +1,24 @@
-<!-- <app-navbar></app-navbar> -->
-
-<div class="col-container" style="max-width: 800px; margin: 40px auto">
+<div class="col-container exam-list-container">
   <h2>All Exams</h2>
 
-  <button
-    routerLink="/admin/create"
-    class="secondary-btn"
-    style="width: fit-content"
-  >
+  <button routerLink="/admin/create" class="secondary-btn create-exam-btn">
     Create New Exam
   </button>
 
-  <div
-    *ngIf="exams.length === 0"
-    class="card-container"
-    style="background-color: var(--card--variant--color); text-align: center"
-  >
+  <div *ngIf="exams.length === 0" class="card-container empty-exam-card">
     No exams found.
   </div>
 
-  <ul class="col-container" style="margin-top: 24px">
+  <ul class="col-container exam-list">
     <li
-      class="card-container row-container"
-      style="justify-content: space-between; align-items: center"
+      class="card-container row-container exam-item"
       *ngFor="let exam of exams"
     >
-      <span style="font-weight: 500">{{ exam.title }}</span>
+      <span class="exam-title">{{ exam.title }}</span>
 
       <button
         (click)="deleteExam(exam.id)"
-        class="destructive-btn"
-        style="padding: 8px 12px; font-size: 14px"
+        class="destructive-btn delete-exam-btn"
       >
         Delete
       </button>

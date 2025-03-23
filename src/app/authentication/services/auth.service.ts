@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ProfileService } from './profile.service';
+import { ManageService } from './manage.service';
 import { AuthResponse } from 'src/app/models/auth/authresponse';
 import {
   BASE_URL,
   FIREBASE_SIGN_IN_URL,
   FIREBASE_SIGN_UP_URL,
   USER_ENDPOINT,
-} from 'src/app/shared/constants/firebase';
+} from 'src/app/shared/constants/firebaseEnvironment';
 import { map, switchMap, tap } from 'rxjs';
 import { User } from 'src/app/models/user/user';
 
@@ -15,10 +15,7 @@ import { User } from 'src/app/models/user/user';
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(
-    private http: HttpClient,
-    private profileService: ProfileService
-  ) {}
+  constructor(private http: HttpClient, private manageService: ManageService) {}
 
   registerUser(user: {
     name: string;
@@ -70,10 +67,10 @@ export class AuthService {
         map((user) => {
           return { ...user, token, refreshToken: authResponse.refreshToken };
         }),
-        tap((user: User) => this.profileService.setUserInLocal(user))
+        tap((user: User) => this.manageService.setUserInLocal(user))
       );
   }
   logout() {
-    this.profileService.logout();
+    this.manageService.logout();
   }
 }

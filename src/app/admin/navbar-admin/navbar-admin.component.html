@@ -1,61 +1,33 @@
-<nav
-  class="row-container"
-  style="
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--primary--color);
-    padding: 16px 24px;
-    border-radius: var(--border--radius);
-  "
->
-  <div class="row-container" style="gap: 40px; align-items: center">
-    <a
-      style="
-        color: #ffffff;
-        font-size: 20px;
-        font-weight: 600;
-        text-decoration: none;
-      "
-      >Admin Panel</a
-    >
+<nav class="app-navbar">
+  <div class="app-navbar-left">
+    <a class="app-navbar-title">Admin Panel</a>
 
-    <ul class="row-container" style="gap: 20px; list-style: none">
+    <ul class="app-navbar-links">
       <li>
         <a
           routerLink="/admin/exam-list"
           routerLinkActive="active"
-          style="
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-          "
-          >Exams</a
+          class="app-navbar-link"
         >
+          Exams
+        </a>
       </li>
       <li>
         <a
           routerLink="/admin/create"
           routerLinkActive="active"
-          style="
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-          "
-          >Create Exam</a
+          class="app-navbar-link"
         >
+          Create Exam
+        </a>
       </li>
     </ul>
   </div>
+
   <button
+    class="destructive-btn app-navbar-logout"
+    style="color: white"
     (click)="logout()"
-    class="destructive-btn"
-    style="
-      background-color: #ffffff;
-      color: var(--error--color);
-      font-weight: 600;
-    "
   >
     Logout
   </button>

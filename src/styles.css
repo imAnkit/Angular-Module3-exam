@@ -1,6 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
 :root {
   --primary--color: #3498db;
+  --secondary--color: #007bff;
   --background--color: #f9f9f9;
   --on--background--color: #333333;
   --card--color: #ffffff;
@@ -151,4 +151,45 @@ hr {
 .error-text {
   font-size: 12px;
   color: var(--error--color);
+}
+.app-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--primary--color);
+  padding: 16px 24px;
+  border-radius: var(--border--radius);
+}
+.app-navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.app-navbar-title {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.app-navbar-links {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.app-navbar-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.app-navbar-logout {
+  background-color: #ffffff;
+  color: var(--error--color);
+  font-weight: 600;
 }
